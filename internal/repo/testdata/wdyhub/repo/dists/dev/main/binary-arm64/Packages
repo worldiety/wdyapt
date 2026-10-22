@@ -1,0 +1,131 @@
+Package: wdyhub-builder
+Version: 1.5.0~dev.20261019120000.abcdef12
+Architecture: arm64
+Maintainer: worldiety GmbH <support@worldiety.de>
+Installed-Size: 25
+Depends: systemd, golang-go
+Section: admin
+Priority: optional
+Homepage: https://gitlab.worldiety.net/nago/wdyhub
+Filename: pool/main/w/wdyhub-builder/wdyhub-builder_1.5.0~dev.20261019120000.abcdef12_arm64.deb
+Size: 2992
+MD5sum: 47a48011019ded53d11a3de6e14b3ed1
+SHA256: 47aa42bbd998bb8f0ead33deee7d12fa0711fcc83d1105d234615f93bb5bcaf8
+Description: worldiety Hub builder: builds applications from their source code
+ A builder translates the source code of applications into programs the
+ runners execute, each build as a transient systemd unit under the system
+ user wdyhub-build, with limits and sandbox. It runs as root to create
+ these units and builds with the Go toolchain of the distribution.
+ .
+ Its service starts once "wdyhub-builder join" has joined it to a
+ controlplane.
+
+Package: wdyhub-controlplane
+Version: 1.5.0~dev.20261019120000.abcdef12
+Architecture: arm64
+Maintainer: worldiety GmbH <support@worldiety.de>
+Installed-Size: 29
+Depends: systemd
+Section: admin
+Priority: optional
+Homepage: https://gitlab.worldiety.net/nago/wdyhub
+Filename: pool/main/w/wdyhub-controlplane/wdyhub-controlplane_1.5.0~dev.20261019120000.abcdef12_arm64.deb
+Size: 3090
+MD5sum: 2273d9b1e60d491c57fc0d783ec32bb3
+SHA256: 1247dbbc30a65dcf76a2c4781805c19ef80333b0d6d9c0e1e5821f5b37334d04
+Description: worldiety Hub controlplane: central control and certificate authority
+ The controlplane is the central point of the worldiety Hub. Runners,
+ proxies, builders, the managementplane and web join it, receive their
+ certificates from it and get their work through it. It hosts no
+ applications itself.
+ .
+ The service wdyhub-controlplane starts right after the installation and
+ keeps its data in /var/lib/wdyhub/controlplane.d. "wdyhub-controlplane
+ help" explains its commands, /etc/wdyhub/controlplane.env its settings.
+ The installation creates that file from
+ /usr/share/wdyhub/controlplane.env.example if it is missing; updates
+ never change it.
+
+Package: wdyhub-managementplane
+Version: 1.5.0~dev.20261019120000.abcdef12
+Architecture: arm64
+Maintainer: worldiety GmbH <support@worldiety.de>
+Installed-Size: 29
+Depends: systemd
+Section: admin
+Priority: optional
+Homepage: https://gitlab.worldiety.net/nago/wdyhub
+Filename: pool/main/w/wdyhub-managementplane/wdyhub-managementplane_1.5.0~dev.20261019120000.abcdef12_arm64.deb
+Size: 3070
+MD5sum: 4a960a19ca83cf5f10b72b2861821b04
+SHA256: 34b079b5b5771c3eb1f2d85a5244fd255ca68e6c0e9e57deaf7c722352d1a68e
+Description: worldiety Hub managementplane: business data and rules
+ The managementplane keeps users, roles, groups, applications, regions,
+ artifacts and instances, checks the business rules and the rights of the
+ acting user and tells the controlplane what should run where.
+ .
+ Its service starts once "wdyhub-managementplane join" has joined it to a
+ controlplane.
+
+Package: wdyhub-proxy
+Version: 1.5.0~dev.20261019120000.abcdef12
+Architecture: arm64
+Maintainer: worldiety GmbH <support@worldiety.de>
+Installed-Size: 29
+Depends: systemd
+Section: admin
+Priority: optional
+Homepage: https://gitlab.worldiety.net/nago/wdyhub
+Filename: pool/main/w/wdyhub-proxy/wdyhub-proxy_1.5.0~dev.20261019120000.abcdef12_arm64.deb
+Size: 3140
+MD5sum: d0b33be4154ee7e620493bd31ce1b9cf
+SHA256: ba85da269335e3854263e9ffdacd629f9a07bbed86c1f4ee5c8987096211aa96
+Description: worldiety Hub proxy: entry point of end users
+ A proxy accepts the HTTP and HTTPS requests of end users and forwards
+ them through tunnels to the runners executing the requested
+ applications. Its service may open the ports 80 and 443.
+ .
+ Its service starts once "wdyhub-proxy join" has joined it to a
+ controlplane.
+
+Package: wdyhub-runner
+Version: 1.5.0~dev.20261019120000.abcdef12
+Architecture: arm64
+Maintainer: worldiety GmbH <support@worldiety.de>
+Installed-Size: 22
+Depends: systemd
+Section: admin
+Priority: optional
+Homepage: https://gitlab.worldiety.net/nago/wdyhub
+Filename: pool/main/w/wdyhub-runner/wdyhub-runner_1.5.0~dev.20261019120000.abcdef12_arm64.deb
+Size: 2806
+MD5sum: 50b267ddb419336508257160ae26f956
+SHA256: e5af1234e2dfd2428122adb6485af3634b9cf4511ef37682955f9f059e88492f
+Description: worldiety Hub runner: executes the applications
+ A runner executes the instances of the applications hosted on the
+ worldiety Hub, each as a systemd unit with a dynamic user, its own
+ limits and sandbox. It runs as root to create these units.
+ .
+ Its service starts once "wdyhub-runner join" has joined it to a
+ controlplane.
+
+Package: wdyhub-web
+Version: 1.5.0~dev.20261019120000.abcdef12
+Architecture: arm64
+Maintainer: worldiety GmbH <support@worldiety.de>
+Installed-Size: 25
+Depends: systemd, git
+Section: admin
+Priority: optional
+Homepage: https://gitlab.worldiety.net/nago/wdyhub
+Filename: pool/main/w/wdyhub-web/wdyhub-web_1.5.0~dev.20261019120000.abcdef12_arm64.deb
+Size: 2920
+MD5sum: 455f19defdb706be225f46acd16af206
+SHA256: 110e86743bd39f7398187efff492606ee00b1fa8b6219b5e8bf6308c35d42fcc
+Description: worldiety Hub web: marketplace and management interface
+ web is where people use the worldiety Hub: they register, manage their
+ groups, publish applications and order instances. It uses git to read
+ the repositories of applications.
+ .
+ Its service starts once "wdyhub-web join" has joined it to a
+ controlplane.

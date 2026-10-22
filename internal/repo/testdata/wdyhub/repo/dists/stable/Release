@@ -1,0 +1,19 @@
+Origin: worldiety
+Label: worldiety Hub
+Suite: stable
+Codename: stable
+Date: Sat, 03 Oct 2026 04:00:00 UTC
+Architectures: amd64 arm64
+Components: main
+Description: worldiety Hub, channel stable: the released versions
+Changelogs: no
+MD5Sum:
+ 5f3dba99d5314819e27e6ad0d37ea5e9 5051 main/binary-amd64/Packages
+ bb8a247a045aec5118ad95e191f39cb9 1671 main/binary-amd64/Packages.gz
+ 9c671cfb3244c08aaa3d395e8689ca46 5051 main/binary-arm64/Packages
+ 4dbac7de9ebf91803dee463aecb9a2c3 1669 main/binary-arm64/Packages.gz
+SHA256:
+ ebbf80fffe766f7e187e99cf3cc2187424a494bd6b8a23aa0a30f5b79317555c 5051 main/binary-amd64/Packages
+ d3b7898a23ac1d4d07b02ba160d9b9c46293427b826cb9a910151406129d91cd 1671 main/binary-amd64/Packages.gz
+ 240191709f05ae041f104d914331929304a327754f9478558ac4459fe19a8929 5051 main/binary-arm64/Packages
+ eaace6b976476debfb7ab44ab984e1d974f088a06fe36f250a1f8d9b13a1b4c2 1669 main/binary-arm64/Packages.gz

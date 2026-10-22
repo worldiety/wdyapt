@@ -1,0 +1,687 @@
+{
+  "version": 8,
+  "types": {},
+  "requirements": {
+    "R-ACCESS-CHECK": {
+      "text": "450243fd3c8e6a6c21c905328eb4c6bb4129d65a34e61c9cd9af057ef1f27b5b",
+      "title": "Check the access",
+      "from": "requirements/_sources/clarification-of-decisions.md#access-to-the-storage"
+    },
+    "R-ACCESS-HOST-KEY": {
+      "text": "919da5f2f118c43c0e8fc307450704f2bf77349b264ede6b252245604f67d036",
+      "title": "Check the host key",
+      "from": "requirements/_sources/clarification-of-decisions.md#access-to-the-storage"
+    },
+    "R-ACCESS-LOGIN": {
+      "text": "c2d9fd3ea9f5f4b73826be481895458b940c8883efb4989704773416d44085a8",
+      "title": "Login to the storage",
+      "from": "requirements/_sources/clarification-of-decisions.md#access-to-the-storage"
+    },
+    "R-CST-NO-EXTERNAL-PROGRAMS": {
+      "text": "4d28345a58a91ecf093b0c3f47577d10bf4295aa03b7ca23b97c5aa46421bb58",
+      "title": "No external programs",
+      "from": "requirements/_sources/assignment.md#no-dependencies"
+    },
+    "R-CST-STANDARD-LIBRARY-ONLY": {
+      "text": "488ddc5d84e4c8508a93151e3cae254e84b941e297dd612eb9a921ffcab1c466",
+      "title": "Go standard library only",
+      "from": "requirements/_sources/assignment.md#no-dependencies"
+    },
+    "R-DEC-ATOMIC-PUBLISHING": {
+      "text": "6ec089b90b50a8a861dcb52716615b66f3dbc46a1bfda071434c43019a1aea77",
+      "title": "Safe switching",
+      "from": "requirements/_sources/clarification-of-decisions.md#safe-switching"
+    },
+    "R-DEC-LOCK-AND-CONFLICT-DETECTION": {
+      "text": "ae5d1917c234c2fa2cc3f4aacb80ed8004babe8dabb903c28b251ed126f9d2a0",
+      "title": "Lock and conflict detection",
+      "from": "requirements/_sources/clarification-of-decisions.md#concurrent-publishing"
+    },
+    "R-DEC-NO-DELETION": {
+      "text": "a383d450232527290cfe3021ea1fea2ac6dd986b039befdd68e054240c646783",
+      "title": "No deletion of published packages",
+      "from": "requirements/_sources/assignment.md#no-deletion-of-uploaded-artifacts"
+    },
+    "R-DEC-OPENPGP-IN-PROCESS": {
+      "text": "b55979416c5800e8cfe2cf084513ecd1887a468b7e4139b5a1928a3f8dbe35e6",
+      "title": "OpenPGP in the tool",
+      "from": "requirements/_sources/clarification-of-decisions.md#signing-in-the-tool"
+    },
+    "R-DEC-SSH-AND-SFTP-IN-PROCESS": {
+      "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe",
+      "title": "SSH and SFTP in the tool",
+      "from": "requirements/_sources/assignment.md#sftp-in-the-tool"
+    },
+    "R-KEY-EXPORT-AND-SHOW": {
+      "text": "b7cb6f952181eacaf871cc68ce81fea6a59c68b85216c32538817686682f4a92",
+      "title": "Export and show keys",
+      "from": "requirements/_sources/clarification-of-decisions.md#signing-in-the-tool"
+    },
+    "R-KEY-GENERATE": {
+      "text": "7421186915174aede2eab9b394781fe0a48330ba93d06871dcf95f3555a64ed7",
+      "title": "Generate keys",
+      "from": "requirements/_sources/clarification-of-decisions.md#signing-in-the-tool"
+    },
+    "R-KEY-ROTATION": {
+      "text": "a0d26310315b480e6fa5e604ae2beb1b61069b3a6b14268be591f498d7fe947d",
+      "title": "Key rotation",
+      "from": "requirements/_sources/clarification-of-decisions.md#signing-in-the-tool"
+    },
+    "R-KEY-USE-GNUPG-KEYS": {
+      "text": "7cb56b267541641a2702f4a7f52804b90d2f7e239f2abff41a9c679187dd5700",
+      "title": "Use keys from GnuPG",
+      "from": "requirements/_sources/clarification-of-decisions.md#signing-in-the-tool"
+    },
+    "R-NFR-CONFIDENTIAL-CREDENTIALS": {
+      "text": "74bb738eeaa236037291be095d9fd0b2693c719fe0c190f306719efeb3d9855c",
+      "title": "Confidential credentials",
+      "from": "requirements/_sources/clarification-of-decisions.md#access-to-the-storage"
+    },
+    "R-NFR-HUMANS-AND-PIPELINES": {
+      "text": "23a72d42a3675861e2968f211f7f7090a51119b1544f8e2c46dd0fc420fb6ffe",
+      "title": "For humans and pipelines",
+      "from": "requirements/_sources/assignment.md#humans-and-pipelines"
+    },
+    "R-NFR-PLATFORMS": {
+      "text": "3e5af9e9414349199a867d542f085518b0506749e8fa0fc951e66be2269ae191",
+      "title": "Linux and macOS on amd64 and arm64",
+      "from": "requirements/_sources/clarification-of-decisions.md#platforms"
+    },
+    "R-NFR-REPRODUCIBILITY": {
+      "text": "273e40162714c2d1120312c56fdeee15bd102e555d02b6f26426caeeb68621b2",
+      "title": "Reproducible results",
+      "from": "requirements/_sources/clarification-of-decisions.md#reproducibility"
+    },
+    "R-NFR-SELF-EXPLAINING-CLI": {
+      "text": "212a9c2a05d3e45837eed2075f4571a18793728c7db52b8c1feccc4e5c91a7ff",
+      "title": "Self-explaining command line",
+      "from": "requirements/_sources/assignment.md#self-explaining-commands"
+    },
+    "R-PKG-BUILD-FROM-FILES": {
+      "text": "9dde348cddca667f2688a291880c6ebd27d0fce69d5ecf0b024adab6164f140c",
+      "title": "Build packages from files",
+      "from": "requirements/_sources/assignment.md#ship-arbitrary-programs"
+    },
+    "R-PKG-CONTROL-DATA": {
+      "text": "ac04c0b5c779096319e85095b4020d57514607fd46d05582d068cbab4efbd5f5",
+      "title": "Control data of a package",
+      "from": "requirements/_sources/clarification-of-decisions.md#describing-packages"
+    },
+    "R-PKG-SHOW": {
+      "text": "d7db4b842e2e3f89c94fd54c9654d86e36aeb79f35c855c6a5a83c1c7f58a111",
+      "title": "Show packages",
+      "from": "requirements/_sources/clarification-of-decisions.md#describing-packages"
+    },
+    "R-PKG-VALIDATE-INPUT": {
+      "text": "5a6233a10e8bae98547f7bdd9310cef227c7047645a5574baf5dffb5a863968e",
+      "title": "Validate inputs before building",
+      "from": "requirements/_sources/clarification-of-decisions.md#describing-packages"
+    },
+    "R-REPO-CHECK-STATE": {
+      "text": "7b32ef5d4778fec2cdc48aad655a46cd0b3c5938ecbe27aea6e121d99170f7f2",
+      "title": "Check the published state",
+      "from": "requirements/_sources/clarification-of-decisions.md#continue-the-existing-repository"
+    },
+    "R-REPO-DRY-RUN": {
+      "text": "10d6b95cddbc1f017351e8674c944571ae98ad9d0cac890a88cc1f9e43bd10ae",
+      "title": "Dry run",
+      "from": "requirements/_sources/clarification-of-decisions.md#trying-without-effect"
+    },
+    "R-REPO-KEEP-RELEASE-FIELDS": {
+      "text": "87ab0e91c44deeaa68317439c2a2689995fa0391b9ca6813a117b7f2bdc5f0e0",
+      "title": "Keep the fields of a suite",
+      "from": "requirements/_sources/clarification-of-decisions.md#continue-the-existing-repository"
+    },
+    "R-REPO-LIST": {
+      "text": "2e75d67b02e317eb144e5532d458ad8ee0dfe5b4a00c719209c41b368fd1b0c2",
+      "title": "List the packages of a suite",
+      "from": "requirements/_sources/assignment.md#humans-and-pipelines"
+    },
+    "R-REPO-NEVER-REPLACE": {
+      "text": "3de7a5bfd3c5db52f02ced549382c20e2e98c9e49f56d5256f30ee7806b97d66",
+      "title": "Never replace published packages",
+      "from": "requirements/_sources/clarification-of-decisions.md#continue-the-existing-repository"
+    },
+    "R-REPO-PUBLISH-PACKAGES": {
+      "text": "d39b8dd85e34263f65664c41b5f578e40bfab4fddc8975d61756d6ab60a8a744",
+      "title": "Publish packages",
+      "from": "requirements/_sources/assignment.md#ship-arbitrary-programs"
+    },
+    "R-REPO-SIGN": {
+      "text": "282cf7bb3ac4c8f2def756fefb559daa3b6ec104af5000fc60c8c1280cbdacd9",
+      "title": "Sign the Release",
+      "from": "requirements/_sources/clarification-of-decisions.md#signing-in-the-tool"
+    },
+    "R-REPO-VERIFY": {
+      "text": "d45101a0120ab53f098bf7749c5b06d18684c479e5741fb15856289953416c2e",
+      "title": "Verify a repository",
+      "from": "requirements/_sources/clarification-of-decisions.md#continue-the-existing-repository"
+    }
+  },
+  "sources": {
+    "requirements/_sources/assignment.md#assignment-for-wdyapt": {
+      "fingerprint": "4978c167c233ec1428f00cef30bd4642ad9f39473eda550f988bafdc79812edb",
+      "kind": "markdown"
+    },
+    "requirements/_sources/assignment.md#humans-and-pipelines": {
+      "fingerprint": "327afde19691b20a9430e0e9a476787e09732340a27c90ab6e619845a2f77507",
+      "kind": "markdown"
+    },
+    "requirements/_sources/assignment.md#no-deletion-of-uploaded-artifacts": {
+      "fingerprint": "5e67b6b21885c5645ee03a0e79b8469bf6f55320d09db9d7d38e671382bb3d23",
+      "kind": "markdown"
+    },
+    "requirements/_sources/assignment.md#no-dependencies": {
+      "fingerprint": "088b0cd06ad55c847465960fc838b6fc6a425ee002205727d9fd3ef5fd36be7a",
+      "kind": "markdown"
+    },
+    "requirements/_sources/assignment.md#self-explaining-commands": {
+      "fingerprint": "cde9fa56fd9ae4b06a0f9ab109f79a1cd4362a0c910ab60e74bf89eb30b70511",
+      "kind": "markdown"
+    },
+    "requirements/_sources/assignment.md#sftp-in-the-tool": {
+      "fingerprint": "95a40560f2b202c1e2c57605ac5855dd3de37cf3936e0c48d16cf1e63a1ba480",
+      "kind": "markdown"
+    },
+    "requirements/_sources/assignment.md#ship-arbitrary-programs": {
+      "fingerprint": "3423061960814c9ade10e7a73862f4804c8a2281c8c01bd570c2d08b7003e5ea",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#access-to-the-storage": {
+      "fingerprint": "5cced24cc9c5c01c434befe0c1284e33ec1bdd0c6b2fe2848eca78e2c122f118",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#clarification-of-the-fundamental-decisions-for-wdyapt": {
+      "fingerprint": "13ff69a632165f02e4b60c47cc9ad54c008536b455d709d5ac40c1fd835bc05b",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#concurrent-publishing": {
+      "fingerprint": "b585b95c03135cef09a878418e70e3705a3d71c6cab191ee2740273ca0eae68d",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#continue-the-existing-repository": {
+      "fingerprint": "bcf0ece640d434d59b71757964bc8278ced79edb598b3e82751aaf454f341e8d",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#describing-packages": {
+      "fingerprint": "60720f2ef520370df0d9bc8bbacad12d044f130e8dc7467398c310dbe1e883d8",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#name-and-location": {
+      "fingerprint": "af7f517c0ec2b5dddb3afb3b152d3efffba792ef1744918c9d2a94ccc750b62e",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#platforms": {
+      "fingerprint": "3df19d0d35c4023c0cda75e19dfcee67c53eac404f9a333e6339aef44970ff22",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#reproducibility": {
+      "fingerprint": "78eaa29c1f28f52bed1132f77af3645252e0b607ba8419d3b36b205a38e1e49e",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#safe-switching": {
+      "fingerprint": "e5a1e891ec556ff0f5911ee27c9dff353f6af797e4c6bf4ebc87dc5bf2c06f08",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#signing-in-the-tool": {
+      "fingerprint": "86841c4a4797f50e4ece4cfe3926c645b8b7eca88bb1e1384e5e8aa907f85591",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#speclink-as-the-only-exception": {
+      "fingerprint": "9a66ccacd162892c11c5b07cd5392cb9693b973b3b04eb42c99dd58fcf9ab4d2",
+      "kind": "markdown"
+    },
+    "requirements/_sources/clarification-of-decisions.md#trying-without-effect": {
+      "fingerprint": "ace6fcf75ff742a52bbd352b170e948a97ef0b6850dc28ac4fca4cfb7dd6e56b",
+      "kind": "markdown"
+    }
+  },
+  "verifications": {
+    "R-ACCESS-CHECK": [
+      {
+        "test": "TestRemoteCheckChangesNothing",
+        "text": "450243fd3c8e6a6c21c905328eb4c6bb4129d65a34e61c9cd9af057ef1f27b5b"
+      }
+    ],
+    "R-ACCESS-HOST-KEY": [
+      {
+        "test": "TestHashedHosts",
+        "text": "919da5f2f118c43c0e8fc307450704f2bf77349b264ede6b252245604f67d036"
+      },
+      {
+        "test": "TestHostKeyChecksOverSFTP",
+        "text": "919da5f2f118c43c0e8fc307450704f2bf77349b264ede6b252245604f67d036"
+      },
+      {
+        "test": "TestHostKeyCommand",
+        "text": "919da5f2f118c43c0e8fc307450704f2bf77349b264ede6b252245604f67d036"
+      },
+      {
+        "test": "TestKnownHostsMatching",
+        "text": "919da5f2f118c43c0e8fc307450704f2bf77349b264ede6b252245604f67d036"
+      },
+      {
+        "test": "TestUnknownHostRefused",
+        "text": "919da5f2f118c43c0e8fc307450704f2bf77349b264ede6b252245604f67d036"
+      }
+    ],
+    "R-ACCESS-LOGIN": [
+      {
+        "test": "TestAgent",
+        "text": "c2d9fd3ea9f5f4b73826be481895458b940c8883efb4989704773416d44085a8"
+      },
+      {
+        "test": "TestKeyboardInteractive",
+        "text": "c2d9fd3ea9f5f4b73826be481895458b940c8883efb4989704773416d44085a8"
+      },
+      {
+        "test": "TestPasswordAuth",
+        "text": "c2d9fd3ea9f5f4b73826be481895458b940c8883efb4989704773416d44085a8"
+      },
+      {
+        "test": "TestPublicKeyFile",
+        "text": "c2d9fd3ea9f5f4b73826be481895458b940c8883efb4989704773416d44085a8"
+      }
+    ],
+    "R-CST-NO-EXTERNAL-PROGRAMS": [
+      {
+        "test": "TestNoExec",
+        "text": "4d28345a58a91ecf093b0c3f47577d10bf4295aa03b7ca23b97c5aa46421bb58"
+      }
+    ],
+    "R-CST-STANDARD-LIBRARY-ONLY": [
+      {
+        "test": "TestBuildsWithoutCgo",
+        "text": "488ddc5d84e4c8508a93151e3cae254e84b941e297dd612eb9a921ffcab1c466"
+      },
+      {
+        "test": "TestOnlyStandardLibrary",
+        "text": "488ddc5d84e4c8508a93151e3cae254e84b941e297dd612eb9a921ffcab1c466"
+      }
+    ],
+    "R-DEC-ATOMIC-PUBLISHING": [
+      {
+        "test": "TestAbortLeavesNoPartialFile",
+        "text": "6ec089b90b50a8a861dcb52716615b66f3dbc46a1bfda071434c43019a1aea77"
+      },
+      {
+        "test": "TestAbortedSFTPUpload",
+        "text": "6ec089b90b50a8a861dcb52716615b66f3dbc46a1bfda071434c43019a1aea77"
+      },
+      {
+        "test": "TestInterruptedSwitchIsCompleted",
+        "text": "6ec089b90b50a8a861dcb52716615b66f3dbc46a1bfda071434c43019a1aea77"
+      },
+      {
+        "test": "TestUploadOrder",
+        "text": "6ec089b90b50a8a861dcb52716615b66f3dbc46a1bfda071434c43019a1aea77"
+      }
+    ],
+    "R-DEC-LOCK-AND-CONFLICT-DETECTION": [
+      {
+        "test": "TestConcurrentChangeDetected",
+        "text": "ae5d1917c234c2fa2cc3f4aacb80ed8004babe8dabb903c28b251ed126f9d2a0"
+      },
+      {
+        "test": "TestLockHeld",
+        "text": "ae5d1917c234c2fa2cc3f4aacb80ed8004babe8dabb903c28b251ed126f9d2a0"
+      }
+    ],
+    "R-DEC-NO-DELETION": [
+      {
+        "test": "TestManyVersionsAreKeptAndNothingIsRemoved",
+        "text": "a383d450232527290cfe3021ea1fea2ac6dd986b039befdd68e054240c646783"
+      }
+    ],
+    "R-DEC-OPENPGP-IN-PROCESS": [
+      {
+        "test": "TestArmorCRC",
+        "text": "b55979416c5800e8cfe2cf084513ecd1887a468b7e4139b5a1928a3f8dbe35e6"
+      },
+      {
+        "test": "TestSignaturesVerifyWithOwnVerifier",
+        "text": "b55979416c5800e8cfe2cf084513ecd1887a468b7e4139b5a1928a3f8dbe35e6"
+      },
+      {
+        "test": "TestVerifiesGnuPGSignatures",
+        "text": "b55979416c5800e8cfe2cf084513ecd1887a468b7e4139b5a1928a3f8dbe35e6"
+      }
+    ],
+    "R-DEC-SSH-AND-SFTP-IN-PROCESS": [
+      {
+        "test": "TestChannelWindowsAndRekey",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestCiphers",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestHostKeyAlgorithms",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestKexAlgorithms",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestPublishOverSFTP",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestRejectedHostKeyStops",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestRekey",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestRenameWithoutPosixRename",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestSFTPOperations",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestStrictKexRejectsInjectedPackets",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestTamperedPacketIsRejected",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      },
+      {
+        "test": "TestVersionExchange",
+        "text": "b3b4116178a430036f6a4718773af744ebd71d0f301e83e548944fac64b90abe"
+      }
+    ],
+    "R-KEY-EXPORT-AND-SHOW": [
+      {
+        "test": "TestExportBinaryAndArmored",
+        "text": "b7cb6f952181eacaf871cc68ce81fea6a59c68b85216c32538817686682f4a92"
+      },
+      {
+        "test": "TestKeyExport",
+        "text": "b7cb6f952181eacaf871cc68ce81fea6a59c68b85216c32538817686682f4a92"
+      },
+      {
+        "test": "TestShowKey",
+        "text": "b7cb6f952181eacaf871cc68ce81fea6a59c68b85216c32538817686682f4a92"
+      }
+    ],
+    "R-KEY-GENERATE": [
+      {
+        "test": "TestGeneratedKeySignsAndVerifies",
+        "text": "7421186915174aede2eab9b394781fe0a48330ba93d06871dcf95f3555a64ed7"
+      },
+      {
+        "test": "TestKeyGenerate",
+        "text": "7421186915174aede2eab9b394781fe0a48330ba93d06871dcf95f3555a64ed7"
+      }
+    ],
+    "R-KEY-ROTATION": [
+      {
+        "test": "TestAcceptsPreviousKey",
+        "text": "a0d26310315b480e6fa5e604ae2beb1b61069b3a6b14268be591f498d7fe947d"
+      },
+      {
+        "test": "TestSignsWithTwoKeys",
+        "text": "a0d26310315b480e6fa5e604ae2beb1b61069b3a6b14268be591f498d7fe947d"
+      }
+    ],
+    "R-KEY-USE-GNUPG-KEYS": [
+      {
+        "test": "TestPicksSigningSubkey",
+        "text": "7cb56b267541641a2702f4a7f52804b90d2f7e239f2abff41a9c679187dd5700"
+      },
+      {
+        "test": "TestReadsGnuPGKeys",
+        "text": "7cb56b267541641a2702f4a7f52804b90d2f7e239f2abff41a9c679187dd5700"
+      },
+      {
+        "test": "TestUnlocksProtectedKey",
+        "text": "7cb56b267541641a2702f4a7f52804b90d2f7e239f2abff41a9c679187dd5700"
+      }
+    ],
+    "R-NFR-CONFIDENTIAL-CREDENTIALS": [
+      {
+        "test": "TestPasswordAuth",
+        "text": "74bb738eeaa236037291be095d9fd0b2693c719fe0c190f306719efeb3d9855c"
+      },
+      {
+        "test": "TestSFTPPasswordNeverPrinted",
+        "text": "74bb738eeaa236037291be095d9fd0b2693c719fe0c190f306719efeb3d9855c"
+      },
+      {
+        "test": "TestSecretsNeverPrinted",
+        "text": "74bb738eeaa236037291be095d9fd0b2693c719fe0c190f306719efeb3d9855c"
+      }
+    ],
+    "R-NFR-HUMANS-AND-PIPELINES": [
+      {
+        "test": "TestEnvironmentOverridesDefaults",
+        "text": "23a72d42a3675861e2968f211f7f7090a51119b1544f8e2c46dd0fc420fb6ffe"
+      },
+      {
+        "test": "TestExitCodes",
+        "text": "23a72d42a3675861e2968f211f7f7090a51119b1544f8e2c46dd0fc420fb6ffe"
+      },
+      {
+        "test": "TestJSONOutput",
+        "text": "23a72d42a3675861e2968f211f7f7090a51119b1544f8e2c46dd0fc420fb6ffe"
+      }
+    ],
+    "R-NFR-PLATFORMS": [
+      {
+        "test": "TestBuildsWithoutCgo",
+        "text": "3e5af9e9414349199a867d542f085518b0506749e8fa0fc951e66be2269ae191"
+      }
+    ],
+    "R-NFR-REPRODUCIBILITY": [
+      {
+        "test": "TestDebIsReproducible",
+        "text": "273e40162714c2d1120312c56fdeee15bd102e555d02b6f26426caeeb68621b2"
+      },
+      {
+        "test": "TestIndicesAreReproducible",
+        "text": "273e40162714c2d1120312c56fdeee15bd102e555d02b6f26426caeeb68621b2"
+      }
+    ],
+    "R-NFR-SELF-EXPLAINING-CLI": [
+      {
+        "test": "TestCheckAcceptsASelfExplainingProgram",
+        "text": "212a9c2a05d3e45837eed2075f4571a18793728c7db52b8c1feccc4e5c91a7ff"
+      },
+      {
+        "test": "TestCheckFindsWhatIsNotExplained",
+        "text": "212a9c2a05d3e45837eed2075f4571a18793728c7db52b8c1feccc4e5c91a7ff"
+      },
+      {
+        "test": "TestGroupsExplainTheirCommands",
+        "text": "212a9c2a05d3e45837eed2075f4571a18793728c7db52b8c1feccc4e5c91a7ff"
+      },
+      {
+        "test": "TestHelpFitsTheTerminal",
+        "text": "212a9c2a05d3e45837eed2075f4571a18793728c7db52b8c1feccc4e5c91a7ff"
+      },
+      {
+        "test": "TestHelpFlagAndHelpCommandAgree",
+        "text": "212a9c2a05d3e45837eed2075f4571a18793728c7db52b8c1feccc4e5c91a7ff"
+      },
+      {
+        "test": "TestNoArgumentsExplainsProgram",
+        "text": "212a9c2a05d3e45837eed2075f4571a18793728c7db52b8c1feccc4e5c91a7ff"
+      },
+      {
+        "test": "TestProgramExplainsItself",
+        "text": "212a9c2a05d3e45837eed2075f4571a18793728c7db52b8c1feccc4e5c91a7ff"
+      },
+      {
+        "test": "TestUnknownCommand",
+        "text": "212a9c2a05d3e45837eed2075f4571a18793728c7db52b8c1feccc4e5c91a7ff"
+      },
+      {
+        "test": "TestWriteTextWrapsAndKeepsIndentedBlocks",
+        "text": "212a9c2a05d3e45837eed2075f4571a18793728c7db52b8c1feccc4e5c91a7ff"
+      }
+    ],
+    "R-PKG-BUILD-FROM-FILES": [
+      {
+        "test": "TestArchPlaceholders",
+        "text": "9dde348cddca667f2688a291880c6ebd27d0fce69d5ecf0b024adab6164f140c"
+      },
+      {
+        "test": "TestBuildFromFlags",
+        "text": "9dde348cddca667f2688a291880c6ebd27d0fce69d5ecf0b024adab6164f140c"
+      },
+      {
+        "test": "TestBuildFromManifest",
+        "text": "9dde348cddca667f2688a291880c6ebd27d0fce69d5ecf0b024adab6164f140c"
+      },
+      {
+        "test": "TestManifestIsStrict",
+        "text": "9dde348cddca667f2688a291880c6ebd27d0fce69d5ecf0b024adab6164f140c"
+      },
+      {
+        "test": "TestParseLikeDpkg",
+        "text": "9dde348cddca667f2688a291880c6ebd27d0fce69d5ecf0b024adab6164f140c"
+      }
+    ],
+    "R-PKG-CONTROL-DATA": [
+      {
+        "test": "TestConffilesAndScripts",
+        "text": "ac04c0b5c779096319e85095b4020d57514607fd46d05582d068cbab4efbd5f5"
+      },
+      {
+        "test": "TestControlFields",
+        "text": "ac04c0b5c779096319e85095b4020d57514607fd46d05582d068cbab4efbd5f5"
+      },
+      {
+        "test": "TestParseLikeDpkg",
+        "text": "ac04c0b5c779096319e85095b4020d57514607fd46d05582d068cbab4efbd5f5"
+      }
+    ],
+    "R-PKG-SHOW": [
+      {
+        "test": "TestBuildFromFlags",
+        "text": "d7db4b842e2e3f89c94fd54c9654d86e36aeb79f35c855c6a5a83c1c7f58a111"
+      },
+      {
+        "test": "TestDebJSON",
+        "text": "d7db4b842e2e3f89c94fd54c9654d86e36aeb79f35c855c6a5a83c1c7f58a111"
+      },
+      {
+        "test": "TestInfoShowsPackage",
+        "text": "d7db4b842e2e3f89c94fd54c9654d86e36aeb79f35c855c6a5a83c1c7f58a111"
+      },
+      {
+        "test": "TestReadsForeignPackages",
+        "text": "d7db4b842e2e3f89c94fd54c9654d86e36aeb79f35c855c6a5a83c1c7f58a111"
+      }
+    ],
+    "R-PKG-VALIDATE-INPUT": [
+      {
+        "test": "TestBuildReportsAllProblems",
+        "text": "5a6233a10e8bae98547f7bdd9310cef227c7047645a5574baf5dffb5a863968e"
+      },
+      {
+        "test": "TestElfArchitectureCheck",
+        "text": "5a6233a10e8bae98547f7bdd9310cef227c7047645a5574baf5dffb5a863968e"
+      },
+      {
+        "test": "TestRejectsInvalidInput",
+        "text": "5a6233a10e8bae98547f7bdd9310cef227c7047645a5574baf5dffb5a863968e"
+      }
+    ],
+    "R-REPO-CHECK-STATE": [
+      {
+        "test": "TestReadsWdyhubState",
+        "text": "7b32ef5d4778fec2cdc48aad655a46cd0b3c5938ecbe27aea6e121d99170f7f2"
+      },
+      {
+        "test": "TestTamperedListIsRejected",
+        "text": "7b32ef5d4778fec2cdc48aad655a46cd0b3c5938ecbe27aea6e121d99170f7f2"
+      },
+      {
+        "test": "TestUntrustedSignatureIsRejected",
+        "text": "7b32ef5d4778fec2cdc48aad655a46cd0b3c5938ecbe27aea6e121d99170f7f2"
+      }
+    ],
+    "R-REPO-DRY-RUN": [
+      {
+        "test": "TestDryRunWritesNothing",
+        "text": "10d6b95cddbc1f017351e8674c944571ae98ad9d0cac890a88cc1f9e43bd10ae"
+      }
+    ],
+    "R-REPO-KEEP-RELEASE-FIELDS": [
+      {
+        "test": "TestFieldsOfExistingSuiteAreRefused",
+        "text": "87ab0e91c44deeaa68317439c2a2689995fa0391b9ca6813a117b7f2bdc5f0e0"
+      },
+      {
+        "test": "TestWdyhubLayoutIsPreserved",
+        "text": "87ab0e91c44deeaa68317439c2a2689995fa0391b9ca6813a117b7f2bdc5f0e0"
+      }
+    ],
+    "R-REPO-LIST": [
+      {
+        "test": "TestJSONOutput",
+        "text": "2e75d67b02e317eb144e5532d458ad8ee0dfe5b4a00c719209c41b368fd1b0c2"
+      },
+      {
+        "test": "TestListSuite",
+        "text": "2e75d67b02e317eb144e5532d458ad8ee0dfe5b4a00c719209c41b368fd1b0c2"
+      }
+    ],
+    "R-REPO-NEVER-REPLACE": [
+      {
+        "test": "TestMergeNeverReplaces",
+        "text": "3de7a5bfd3c5db52f02ced549382c20e2e98c9e49f56d5256f30ee7806b97d66"
+      },
+      {
+        "test": "TestNeverReplacesAndRepublishIsNoop",
+        "text": "3de7a5bfd3c5db52f02ced549382c20e2e98c9e49f56d5256f30ee7806b97d66"
+      }
+    ],
+    "R-REPO-PUBLISH-PACKAGES": [
+      {
+        "test": "TestArchAllInEveryList",
+        "text": "d39b8dd85e34263f65664c41b5f578e40bfab4fddc8975d61756d6ab60a8a744"
+      },
+      {
+        "test": "TestEnvironmentOverridesDefaults",
+        "text": "d39b8dd85e34263f65664c41b5f578e40bfab4fddc8975d61756d6ab60a8a744"
+      },
+      {
+        "test": "TestMissingSuiteNeedsCreate",
+        "text": "d39b8dd85e34263f65664c41b5f578e40bfab4fddc8975d61756d6ab60a8a744"
+      },
+      {
+        "test": "TestPoolFilesAreReused",
+        "text": "d39b8dd85e34263f65664c41b5f578e40bfab4fddc8975d61756d6ab60a8a744"
+      },
+      {
+        "test": "TestPublishIntoNewSuite",
+        "text": "d39b8dd85e34263f65664c41b5f578e40bfab4fddc8975d61756d6ab60a8a744"
+      }
+    ],
+    "R-REPO-SIGN": [
+      {
+        "test": "TestReleaseIsSignedAndDateNeverGoesBack",
+        "text": "282cf7bb3ac4c8f2def756fefb559daa3b6ec104af5000fc60c8c1280cbdacd9"
+      }
+    ],
+    "R-REPO-VERIFY": [
+      {
+        "test": "TestJSONOutput",
+        "text": "d45101a0120ab53f098bf7749c5b06d18684c479e5741fb15856289953416c2e"
+      },
+      {
+        "test": "TestVerifyFindsProblems",
+        "text": "d45101a0120ab53f098bf7749c5b06d18684c479e5741fb15856289953416c2e"
+      }
+    ]
+  }
+}

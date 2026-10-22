@@ -1,0 +1,68 @@
+# A tag v<VERSION> builds wdyapt for Linux and macOS on amd64 and arm64,
+# twice and compared, also packs it as .deb and stores everything with
+# SHA256SUMS as a GitHub release. The packages get into the APT repository
+# from a pipeline with the protected credentials, not from here.
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+env:
+  GO_VERSION: "1.27.3"
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4
+
+      - name: The tag names the version in VERSION
+        run: |
+          want="v$(cat VERSION)"
+          if [ "$GITHUB_REF_NAME" != "$want" ]; then
+            echo "tag $GITHUB_REF_NAME does not match VERSION ($want)" >&2
+            exit 1
+          fi
+
+      - name: Build twice and compare
+        run: FULL_VERSION="$(cat VERSION)" just release-check
+
+      - name: Collect the programs and Debian packages
+        run: |
+          set -euo pipefail
+          version="$(cat VERSION)"
+          epoch="$(git show -s --format=%ct HEAD)"
+          mkdir -p build/release
+          for os in linux darwin; do for arch in amd64 arm64; do
+            cp "build/bin/${os}_${arch}/wdyapt" "build/release/wdyapt_${version}_${os}_${arch}"
+          done; done
+          for arch in amd64 arm64; do
+            build/bin/linux_amd64/wdyapt deb build --name wdyapt --version "${version}-1" --arch "$arch" \
+              --maintainer "worldiety GmbH <support@worldiety.de>" \
+              --summary "Build Debian packages and publish them to an APT repository" \
+              --description "wdyapt turns finished programs into Debian packages and publishes them, signed, into an APT repository over SFTP. It needs no other program." \
+              --homepage "https://github.com/worldiety/wdyapt" --section devel \
+              --file "build/bin/linux_${arch}/wdyapt:/usr/bin/wdyapt:0755" \
+              --epoch "$epoch" --out build/release --quiet
+          done
+          (cd build/release && sha256sum * > SHA256SUMS && cat SHA256SUMS)
+
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" build/release/* \
+            --title "wdyapt $(cat VERSION)" \
+            --notes "Statically linked programs for Linux and macOS (amd64, arm64), Debian packages for Linux, and SHA256SUMS. Check the download with: sha256sum --check --ignore-missing SHA256SUMS"

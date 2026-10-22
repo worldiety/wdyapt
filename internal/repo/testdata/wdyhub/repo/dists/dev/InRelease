@@ -1,0 +1,29 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: worldiety
+Label: worldiety Hub
+Suite: dev
+Codename: dev
+Date: Sat, 03 Oct 2026 04:01:00 UTC
+Architectures: amd64 arm64
+Components: main
+Description: worldiety Hub, channel dev: every commit on main, for test machines only
+Changelogs: no
+MD5Sum:
+ eb324cfb8152682587246d5ce77ec694 5387 main/binary-amd64/Packages
+ ce627bc10a2241d11d947a70b783353c 1693 main/binary-amd64/Packages.gz
+ 8473d0312f76f09cc26423ec4e0007ff 5387 main/binary-arm64/Packages
+ c26ab564e9398228974cfbac73641d1b 1688 main/binary-arm64/Packages.gz
+SHA256:
+ 5c2f3e98af445cfa13e9a0f5a65a2d6d407815ec9b3bfb944efd6e4cc7c551f9 5387 main/binary-amd64/Packages
+ 228af15075c151fbd94d30e45e2940ff63656e1d4a12720ffca4f056ff7b8023 1693 main/binary-amd64/Packages.gz
+ ae3e6bc64f09c0ddb44f9899b80ee6147127c082ca61e9f634f5544598d77b0b 5387 main/binary-arm64/Packages
+ 7efe6b289d940880ce352391725b1e950f49dcb88bb34a26034ee21bd7152bf6 1688 main/binary-arm64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQSDV3ceE9xYEbp0dQ7Qd769ooGnlQUCatnQYgAKCRDQd769ooGn
+lTsRAQDb9T+RVM5k+lEn51sgeCGAJYVTj/ye3cPFAGKd19iCCAEA1POp6E7chGuB
+XvlW2eVqeKJTSN6TUOjewYXNpXnb8Qs=
+=VGPD
+-----END PGP SIGNATURE-----

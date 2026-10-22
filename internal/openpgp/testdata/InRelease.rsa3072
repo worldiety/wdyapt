@@ -1,0 +1,31 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: worldiety
+Label: worldiety Hub
+Suite: stable
+Codename: stable
+Date: Mon, 19 Oct 2026 10:00:00 UTC
+Architectures: amd64 arm64
+Components: main
+Description: Test repository
+Changelogs: no
+MD5Sum:
+ d41d8cd98f00b204e9800998ecf8427e 0 main/binary-amd64/Packages
+SHA256:
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-amd64/Packages
+- -dashed line that must be escaped:
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEESj5EtTxKkzWMG6GmiZCqa/2o0LwFAmrZzG8ACgkQiZCqa/2o
+0Lxh0QwAty7LKJsKPu2322re306vvd++Y2CeGYtSRMMgL9rjbcFvCthMOqyvVXI8
+aloKboaHB6sz20zsEy2X4L31V8WiFiYRS7dcSIRsrEhLaYW6flgKw4DzVnjtO9Ot
+EYwVRRbWJH6Y4nH8kxbqvaJvyaakFn1AKBFZOZbR6Sd5TPsHzyS6Ka9ohmYbISsa
+057mkfnjT6RObS6jIjAGDa4L2LHKjrSBaiGKloL8Ncme1Y7t0JdLhILwGn2UBKwr
+QC70PoE2JtJPvmPNMG4opmXKH6zaevl2LWj0395Fsv4gZ16rcZKZxPyldVweJRgZ
+XfmrxHVhTejNUkP2/pqJp7lzxlHsEb+aPHGEnKjhROVDCSNFiA2/m7rYVJpzm7tL
+7cLRfn0D7bCXBDHw8B7IyRmRJkGFwDM18nP49gxBCrYsl8KUDFzuwhstYVQwF12K
+GcyvYu4aOyafYEGPhhENeUgIVi22+fTqy3wacDxi2uWEjM8kWr6PVPv3sFFBJo1T
+3XzeEkWJ
+=17rk
+-----END PGP SIGNATURE-----
